@@ -1,0 +1,148 @@
+<!doctype html>
+<html ng-app="weatherApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/home.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- Bootstrap -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+
+	<body ng-controller="weatherCtrl as ctrl">
+		<div class="all">
+			<!--nav start-->
+			<nav>
+				<span>{{ctrl.city}}</span>
+				<span>{{ctrl.time}}</span>
+				<span>更新于</span>
+			</nav>
+			<!--nav end-->
+			<!--banner start-->
+			<div class="banner">
+				<p>{{ctrl.tmp_min}}°C-{{ctrl.tmp_max}}°C</p>
+				<p>{{ctrl.info}}</p>
+			</div>
+			<!--banner end-->
+			<!--section start-->
+			<section>
+
+				<div class="section1">
+					<span class="titlt">最近三天</span>
+
+					<div class="span1">
+						<ul>
+							<li ng-repeat="d in ctrl.dailyforecast">
+								<span class="li_span1">{{d.date}}&nbsp;&nbsp;&nbsp;</span>
+								<span class="li_span2">&nbsp;&nbsp;&nbsp;{{d.cond_txt_d}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span class="li_span3">&nbsp;&nbsp;&nbsp;{{d.tmp_min}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span class="li_span3">&nbsp;&nbsp;&nbsp;{{d.tmp_max}}</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="section2">
+					<span class="titlt2">空气质量</span>
+
+					<div class="span11">
+						<span>54</span>
+						<span>AQI指数</span>
+					</div>
+
+					<div class="span22">
+						<span>58</span>
+						<span>PM10指数</span>
+					</div>
+				</div>
+
+				<div class="section3">
+					<span class="titlt3">生活建议</span>
+
+					<div class="span111">
+						<span>舒适度：</span>
+						<span>{{ctrl.comf}}</span>
+					</div>
+
+					<div class="span222">
+						<span>洗车指数：</span>
+						<span>{{ctrl.cw}}</span>
+					</div>
+					<div class="span333">
+						<span>运动建议：</span>
+						<span>{{ctrl.sport}}</span>
+					</div>
+					<div class="span444">
+						<span>紫外线指数</span>
+						<span>{{ctrl.uv}}</span>
+					</div>
+				</div>
+
+			</section>
+			<!--section end-->
+
+		</div>
+		<img src="img/button.jpg" class="img-circle button_img" width="50px" height="50px" />
+		<div class="countryName_open" style="display: none;">
+			<div class="mui-content">
+				<div class="mui-content-padded" style="margin-top: 0;">
+					<h5 style="margin-top: 0;">请输入城市名：</h5>
+					<div class="mui-input-row mui-search" ng-click="ctrl.getCountry()">
+						<input type="search" class="mui-input-clear" placeholder="" ng-model="ctrl.city">
+					</div>
+					<h2 ng-bind="ctrl.info"></h2>
+					<p>天气温度：{{ctrl.tmp_min}}°C-{{ctrl.tmp_max}}°C</p>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<script type="text/javascript">
+
+				$(".button_img").bind("click", function() {
+					$(".all").toggle();
+					$(".countryName_open").toggle();
+				})
+
+				var weatherApp = angular.module("weatherApp", []);
+				weatherApp.controller("weatherCtrl", ["$http", function($http) {
+					var country = this;
+					country.getCountry = function() {
+						$http({
+							method: "GET",
+							url: "https://free-api.heweather.com/s6/weather?location=" + country.city + "&key=3dbeb59a2e1a4aaa9bc178f27e7163a9"
+						}).then(function success(resp) {
+							console.log(JSON.stringify(resp));
+							//地点
+							country.info = resp.data.HeWeather6[0].daily_forecast[0].cond_txt_d;
+							//最近三天的天气
+							country.dailyforecast = resp.data.HeWeather6[0].daily_forecast;
+							//更新时间
+							country.time = resp.data.HeWeather6[0].update.loc;
+							//最低温度
+							country.tmp_min = resp.data.HeWeather6[0].daily_forecast[0].tmp_min;
+							//最高温度
+							country.tmp_max = resp.data.HeWeather6[0].daily_forecast[0].tmp_max;
+							//生活建议
+							country.comf = resp.data.HeWeather6[0].lifestyle[0].txt;
+							country.cw = resp.data.HeWeather6[0].lifestyle[6].txt;
+							country.sport = resp.data.HeWeather6[0].lifestyle[3].txt;
+							country.uv = resp.data.HeWeather6[0].lifestyle[5].txt;
+
+						}, function error(resp) {
+
+						});
+					};
+				}]);
+		</script>
+	</body>
+
+</html>

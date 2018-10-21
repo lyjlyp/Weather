@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="weatherApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/countryName.css" />
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-content-padded" style="margin: 15px;" ng-controller="weatherCtrl as ctrl">
+				<h5>请输入城市名：</h5>
+				<div class="mui-input-row mui-search" ng-click="ctrl.getCountry()">
+					<input type="search" class="mui-input-clear" placeholder="" ng-model="ctrl.city">
+				</div>
+				<h1 ng-bind="ctrl.info"></h1>
+
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			var weatherApp = angular.module("weatherApp", []);
+			weatherApp.controller("weatherCtrl", ["$http", function($http) {
+				var country = this;
+				country.getCountry = function() {
+					$http({
+						method: "GET",
+						url: "https://free-api.heweather.com/s6/weather/forecast?location=" + country.city + "&key=3dbeb59a2e1a4aaa9bc178f27e7163a9"
+					}).then(function success(resp) {
+						console.log(JSON.stringify(resp));
+						country.info = resp.data.HeWeather6[0].daily_forecast[0].cond_txt_d;
+					}, function error(resp) {
+
+					});
+				};
+			}]);
+		</script>
+	</body>
+
+</html>

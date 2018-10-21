@@ -1,0 +1,270 @@
+body {
+	margin: 0;
+}
+
+.all {
+	width: 100%;
+	position: absolute;
+	background:url(../img/bg4.jpg);
+	/*设置图片占满全屏*/
+	background-size: cover;
+}
+
+
+/*========================nav start=======================*/
+
+nav {
+	width: 100%;
+	height: 5%;
+	position: relative;
+	float: left;
+	margin-top: 50px;
+}
+
+nav span:nth-child(1) {
+	color: #ffffff;
+	font-size: 2em;
+	float: left;
+	margin-left: 45%;
+}
+
+nav span:nth-child(2) {
+	color: #ffffff;
+	float: right;
+	margin: 5px 5px 5px 0px;
+}
+
+nav span:nth-child(3) {
+	color: #ffffff;
+	float: right;
+	text-align: center;
+	margin: 5px 0px 5px 0px;
+}
+
+
+/*========================nav end=======================*/
+
+
+/*========================banner start=======================*/
+
+.banner {
+	width: 100%;
+	height: 15%;
+	position: relative;
+	float: left;
+	margin-top: 50px;
+}
+
+.banner p:nth-child(1) {
+	width: 95%;
+	color: #ffffff;
+	text-align: right;
+	font-size: 3em;
+	margin: 0;
+}
+
+.banner p:nth-child(2) {
+	width: 95%;
+	text-align: right;
+	color: #ffffff;
+	font-size: 1.3em;
+	margin: 0;
+	margin-top: 30px;
+}
+
+
+/*========================banner end=======================*/
+
+
+/*========================section start=======================*/
+
+section {
+	margin-top: 30px;
+	width: 90%;
+	position: relative;
+	float: left;
+}
+
+/*========================section1 start=======================*/
+
+.section1 {
+	width: 100%;
+	height: 150px;
+	background: #000000;
+	/*设置半透明*/
+	opacity: 0.5;
+	color: #ffffff;
+	margin-left: 20px;
+}
+
+.titlt {
+	width: 100%;
+	float: left;
+	margin-top: 15px;
+	margin-left: 15px;
+	font-size: 1.3em;
+}
+
+.span1 {
+	width: 100%;
+	height: 30%;
+	margin-top: 20px;
+	margin-left: 15px;
+}
+
+.span1 li{
+	list-style-type: none;
+	margin-top: 15px;
+}
+/*========================section1 end=======================*/
+
+
+/*========================section2 start=======================*/
+
+.section2 {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 130px;
+	background: #000000;
+	/*设置半透明*/
+	opacity: 0.5;
+	color: #ffffff;
+	margin-left: 20px;
+	margin-top: 25px;
+}
+
+.titlt2 {
+	width: 100%;
+	float: left;
+	margin-top: 15px;
+	margin-left: 15px;
+	font-size: 1.3em;
+}
+
+.span11 {
+	width: 50%;
+	float: left;
+}
+
+.span11 span:nth-child(1) {
+	width: 100%;
+	float: left;
+	text-align: center;
+	font-size: 2em;
+	margin-top: 15px;
+}
+
+.span11 span:nth-child(2) {
+	width: 100%;
+	float: left;
+	text-align: center;
+	margin-top: 15px;
+}
+
+.span22 {
+	width: 50%;
+	float: left;
+}
+
+.span22 span:nth-child(1) {
+	width: 100%;
+	float: left;
+	text-align: center;
+	font-size: 2em;
+	margin-top: 15px;
+}
+
+.span22 span:nth-child(2) {
+	width: 100%;
+	float: left;
+	text-align: center;
+	margin-top: 15px;
+}
+
+
+/*========================section3 start=======================*/
+
+.section3 {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 300px;
+	background: #000000;
+	/*设置半透明*/
+	opacity: 0.5;
+	color: #ffffff;
+	margin-left: 20px;
+	margin-top: 25px;
+	margin-bottom: 20px;
+}
+
+.titlt3 {
+	width: 100%;
+	float: left;
+	margin-top: 15px;
+	margin-left: 15px;
+	font-size: 1.3em;
+}
+
+.span111 {
+	width: 100%;
+	float: left;
+	margin-top: 15px;
+}
+
+.span111 span:nth-child(1) {
+	margin-left: 15px;
+	margin-top: 15px;
+}
+
+.span222 {
+	width: 100%;
+	float: left;
+	margin-top: 15px;
+}
+
+.span222 span:nth-child(1) {
+	margin-left: 15px;
+	margin-top: 15px;
+}
+
+.span333 {
+	width: 100%;
+	float: left;
+	margin-top: 15px;
+}
+
+.span333 span:nth-child(1) {
+	margin-left: 15px;
+	margin-top: 15px;
+}
+
+.span444 {
+	width: 100%;
+	float: left;
+	margin-top: 15px;
+}
+
+.span444 span:nth-child(1) {
+	margin-left: 15px;
+	margin-top: 15px;
+}
+/*========================section3 end=======================*/
+/*========================section2 end=======================*/
+/*========================section end=======================*/
+.button_img{
+	position:fixed;
+	float: right;
+	bottom:0;
+	right:0;
+}
+
+.countryName_open{
+	width: 100%;
+	height: 100%;
+	float: left;
+	position: relative;
+	
+}
+
